@@ -1,1 +1,13 @@
-<p>home works!</p>
+<h2>Podcast</h2>
+<hr>
+<div class="row">
+  <div class="col-sm-3 " *ngFor="let listaPotcast of potcast">
+    <div class="card">
+      <img [src]="listaPotcast?.['im:image'][0].label" class="card-img-top imagen img-fluid mx-auto d-block" alt="...">
+      <div class="card-body ">
+        <h4 class="card-title text-truncate">{{listaPotcast.title.label}}</h4>
+        <h6 class="card-title text-truncate">Autor: {{listaPotcast?.['im:artist'].label}}</h6>
+      </div>
+    </div>
+  </div>
+</div>

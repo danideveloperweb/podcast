@@ -10,13 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { DetallePodcastComponent } from './components/detalle-podcast/detalle-podcast.component';
 import { DetallecapituloPodcastComponent } from './components/detallecapitulo-podcast/detallecapitulo-podcast.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DetallePodcastComponent,
-    DetallecapituloPodcastComponent
+    DetallecapituloPodcastComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
