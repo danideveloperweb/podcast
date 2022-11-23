@@ -1,28 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { PodcastService } from 'src/app/services/podcast.service';
+import { ReactiveFormsModule, FormsModule, FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  podcast: any[] = [];
+  podcastBuscando:any[]=[];
+  nombreBuscado:string = '';
 
-  potcast:any[]=[];
-
-  constructor(private podcastService: PodcastService) { }
+  constructor(private podcastService: PodcastService, private router: Router) {}
 
   ngOnInit(): void {
-    this.podcastService.obtenerPodcats().subscribe((response:any)=> {
+    this.podcastService.obtenerPodcats().subscribe((response: any) => {
       console.log(response);
-      this.potcast = response.feed.entry;
-      localStorage.setItem("podcast", JSON.stringify(this.potcast));
-      let potcast = this.podcastService.getItem("potcast")
+      this.podcast = response.feed.entry;
+      this.podcastBuscando = response.feed.entry;
 
+       localStorage.setItem('podcast', JSON.stringify(this.podcast));
+       let potcast = this.podcastService.getItem('podcast');
     });
   }
 
-
+  buscarXNombre():void{
+    this.podcast = this.podcastBuscando.filter(busqueda => busqueda.title.label.toUpperCase().includes(this.nombreBuscado.toUpperCase()))
+     || this.podcastBuscando.filter(busqueda => busqueda?.['im:artist'].label.toUpperCase().includes(this.nombreBuscado.toUpperCase()));
+  }
 
 }

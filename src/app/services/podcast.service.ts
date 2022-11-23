@@ -8,6 +8,7 @@ export class PodcastService {
 
   podcast: string = "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json";
 
+
   constructor(private httpClient: HttpClient) {
    }
 

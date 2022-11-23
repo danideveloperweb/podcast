@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DetallePodcastComponent } from './components/detalle-podcast/detalle-podcast.component';
 import { DetallecapituloPodcastComponent } from './components/detallecapitulo-podcast/detallecapitulo-podcast.component';
 import { NavComponent } from './components/nav/nav.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,14 +19,16 @@ import { NavComponent } from './components/nav/nav.component';
     HomeComponent,
     DetallePodcastComponent,
     DetallecapituloPodcastComponent,
-    NavComponent
+    NavComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     DragDropModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
