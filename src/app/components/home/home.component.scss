@@ -1,15 +1,22 @@
 .imagen {
- width: 100px;
- height: 100px;
- border-radius: 100%;
- margin-top: -34px;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  margin-top: -34px;
 }
+
 .card {
   max-width: 14rem;
-  max-height: 600%;
+  max-height: 60%;
   margin: 70px 20px 20px 20px;
-  background: #fff;
   border-radius: 25px;
+  background-color: #ececec;
+  box-shadow:  29px 29px 55px #a4a4a4,
+  -29px -29px 55px #ffffff
 }
 
-
+.card:hover {
+  background-color: #ffffff;
+  transition: all 0.5s linear 0s;
+  scale: 1.2;
+}

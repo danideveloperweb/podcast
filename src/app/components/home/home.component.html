@@ -1,17 +1,20 @@
-<h2>Podcast</h2>
+<a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="router-link-active">
+  <h1 style="color:#2596be; font-weight: 500;">Podcaster</h1>
+</a>
 <hr>
-<div class="form-inline my-2 my-lg-0">
-  <input class="form-control mr-sm-2" [(ngModel)]="nombreBuscado"  type="text" placeholder="Buscar">
-  <button (click)="buscarXNombre()"
-  class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar</button>
+<div class=" container d-flex justify-content-end">
+  <div class="pt-2 px-2" style="color:#2596be; font-size: large; font-weight: 500;">100</div>
+  <div class="col-sm-2 ">
+    <input class="form-control" [(ngModel)]="nombreBuscado"  (keypress)="buscarXNombre()" type="text" placeholder="Buscar podcasts...">
+  </div>
 </div>
 <div class="row">
-  <div class="col-sm-3 " *ngFor="let listaPotcast of podcast">
-    <div class="card">
+  <div class="col-sm-3" *ngFor="let listaPotcast of podcast; let i= index">
+    <div class="card" [routerLink]="['/detalle',listaPotcast.id.attributes?.['im:id']]">
       <img [src]="listaPotcast?.['im:image'][0].label" class="card-img-top imagen img-fluid mx-auto d-block" alt="...">
-      <div class="card-body ">
-        <h4 class="card-title ">{{listaPotcast.title.label}}</h4>
-        <h6 class="card-title ">Autor: {{listaPotcast?.['im:artist'].label}}</h6>
+      <div class="card-body">
+        <h4 class="card-title text-truncate" style="font-weight: bolder;">{{listaPotcast.title.label}}</h4>
+        <h6 class="card-title text-truncate">Autor: {{listaPotcast?.['im:artist'].label}}</h6>
       </div>
     </div>
   </div>

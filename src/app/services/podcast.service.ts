@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class PodcastService {
 
   podcast: string = "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json";
+  podcast2: string = "https://itunes.apple.com/lookup?id=";
 
 
   constructor(private httpClient: HttpClient) {
@@ -16,8 +17,9 @@ export class PodcastService {
     let url = this.podcast;
     return this.httpClient.get(url);
   }
-  detallePodcast(nombre:string){
-    let url = `${this.podcast}/${nombre}`;
+
+  detallePodcast(id:string){
+    let url = `${this.podcast2}${id}`;
     return this.httpClient.get(url);
   }
 

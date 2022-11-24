@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { PodcastService } from 'src/app/services/podcast.service';
 import { ReactiveFormsModule, FormsModule, FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
@@ -12,8 +11,8 @@ import { debounceTime } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   podcast: any[] = [];
-  podcastBuscando:any[]=[];
-  nombreBuscado:string = '';
+  podcastBuscando: any[] = [];
+  nombreBuscado: string = '';
 
   constructor(private podcastService: PodcastService, private router: Router) {}
 
@@ -23,14 +22,23 @@ export class HomeComponent implements OnInit {
       this.podcast = response.feed.entry;
       this.podcastBuscando = response.feed.entry;
 
-       localStorage.setItem('podcast', JSON.stringify(this.podcast));
-       let potcast = this.podcastService.getItem('podcast');
+      localStorage.setItem('podcast', JSON.stringify(this.podcast));
+      let potcast = this.podcastService.getItem('podcast');
     });
   }
 
-  buscarXNombre():void{
-    this.podcast = this.podcastBuscando.filter(busqueda => busqueda.title.label.toUpperCase().includes(this.nombreBuscado.toUpperCase()))
-     || this.podcastBuscando.filter(busqueda => busqueda?.['im:artist'].label.toUpperCase().includes(this.nombreBuscado.toUpperCase()));
+  buscarXNombre(): void {
+    this.podcast =
+      this.podcastBuscando.filter((busqueda) =>
+        busqueda.title.label
+          .toUpperCase()
+          .includes(this.nombreBuscado.toUpperCase())
+      ) ||
+      this.podcastBuscando.filter((busqueda) =>
+        busqueda?.['im:artist'].label
+          .toUpperCase()
+          .includes(this.nombreBuscado.toUpperCase())
+      );
+      this.router.navigate(['/encontrado']);
   }
-
 }
